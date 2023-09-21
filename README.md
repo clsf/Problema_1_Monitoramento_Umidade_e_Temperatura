@@ -17,7 +17,7 @@ Neste projeto, apresentamos uma contextualização do desenvolvimento do sistema
 - [Recursos utilizados](#recursos-utilizados)
 - [Como executar](#como-executar)
   - [Em C](#em-c)
-  - [FPGA](#fpga)
+  - [Para programar na FPGA](#para-programar-na-fpga)
 - [Exemplo de montagem](#exemplo-de-montagem)
 - [UART](#uart)
   - [Escrita e Leitura em C](#escrita-e-leitura-em-c)
@@ -42,8 +42,21 @@ Nesta seção, forneceremos instruções sobre como executar o projeto Nirvan na
 ### Em C
 - Nirvan
 
-### FPGA
-- Cláudia
+### Para programar na FPGA
+1. **Abra o Projeto:**
+   - Utilize o software Quartus.
+   - Abra o projeto "pblsd.qpf" selecionando a opção "Abrir Projeto" ou similar no Quartus.
+
+2. **Compilação do Projeto:**
+   - Verifique se o arquivo "mainV3.v" está configurado como o módulo de nível superior (TOP-LEVEL) do projeto.
+   - Compile o projeto selecionando a opção de compilação no Quartus.
+
+3. **Configuração da Pinagem da FPGA:**
+   - Confirme a configuração da pinagem da FPGA para garantir que esteja corretamente definida de acordo com as especificações do projeto.
+
+4. **Programação na FPGA:**
+   - Certifique-se de que a FPGA esteja conectada ao computador via USB ou outra interface apropriada.
+   - Utilize a opção de programação no Quartus para carregar o projeto compilado na FPGA conectada.
 
 ## Exemplo de montagem
 Nesta seção, apresentaremos um exemplo de montagem do sistema Nirvan.
