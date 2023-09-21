@@ -105,7 +105,7 @@ Funcionamento do Módulo: Quando o sinal start_bit é definido como 1, o módulo
 10. **STOP:** O módulo verifica se a variável "error" é igual a 1 e, se for o caso, retorna ao estado IDLE.
 
 <p align="center">
-  <img src="/img/DHT11OFC.drawio(1).png" alt="Estados da máquina DHT11">
+  <img src="/img/DHT11OFC.drawio (1).png" alt="Estados da máquina DHT11">
 </p>
 
 ## Gerenciamento e processamento da informação
