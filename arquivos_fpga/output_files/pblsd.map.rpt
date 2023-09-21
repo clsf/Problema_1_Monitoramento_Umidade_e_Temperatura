@@ -1,0 +1,1243 @@
+Analysis & Synthesis report for pblsd
+Mon Sep 18 15:19:19 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |mainV3|transmitter3b:transmitter3b_0|state
+  9. State Machine - |mainV3|decodificador:decodificador_0|state
+ 10. State Machine - |mainV3|escalonador:escalonador_0|state
+ 11. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_8|state
+ 12. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE
+ 13. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_7|state
+ 14. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE
+ 15. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_6|state
+ 16. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE
+ 17. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_5|state
+ 18. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE
+ 19. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_4|state
+ 20. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE
+ 21. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_3|state
+ 22. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE
+ 23. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_2|state
+ 24. State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE
+ 25. State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|state
+ 26. State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state
+ 27. State Machine - |mainV3|receiver2b:receiver2b_0|state
+ 28. Registers Removed During Synthesis
+ 29. General Register Statistics
+ 30. Inverted Register Statistics
+ 31. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 32. Parameter Settings for User Entity Instance: baudrate_gen:baudrate_gen_0
+ 33. Parameter Settings for User Entity Instance: receiver2b:receiver2b_0
+ 34. Parameter Settings for User Entity Instance: escalonador:escalonador_0
+ 35. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0
+ 36. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11
+ 37. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11
+ 38. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11
+ 39. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11
+ 40. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11
+ 41. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11
+ 42. Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11
+ 43. Parameter Settings for User Entity Instance: transmitter3b:transmitter3b_0
+ 44. Port Connectivity Checks: "transmitter3b:transmitter3b_0"
+ 45. Port Connectivity Checks: "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|TRIS:TRIS_DATA"
+ 46. Port Connectivity Checks: "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11"
+ 47. Port Connectivity Checks: "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0"
+ 48. Port Connectivity Checks: "escalonador:escalonador_0"
+ 49. Port Connectivity Checks: "receiver2b:receiver2b_0"
+ 50. Post-Synthesis Netlist Statistics for Top Partition
+ 51. Elapsed Time Per Partition
+ 52. Analysis & Synthesis Messages
+ 53. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Sep 18 15:19:19 2023       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; pblsd                                       ;
+; Top-level Entity Name              ; mainV3                                      ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 2,471                                       ;
+;     Total combinational functions  ; 2,440                                       ;
+;     Dedicated logic registers      ; 944                                         ;
+; Total registers                    ; 944                                         ;
+; Total pins                         ; 16                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE30F23C7       ;                    ;
+; Top-level entity name                                            ; mainV3             ; pblsd              ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 6           ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; interface0_modificada.v          ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0_modificada.v ;         ;
+; mainV3.v                         ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v                ;         ;
+; baudrate_gen.v                   ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/baudrate_gen.v          ;         ;
+; receiver2b.v                     ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/receiver2b.v            ;         ;
+; DHT11.v                          ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v                 ;         ;
+; transmitter3b.v                  ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/transmitter3b.v         ;         ;
+; decodificador.v                  ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v         ;         ;
+; escalonador.v                    ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/escalonador.v           ;         ;
+; interface0.v                     ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0.v            ;         ;
+; TRIS.v                           ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v                  ;         ;
+; dht.v                            ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v                   ;         ;
+; geradorMicrossegundo.v           ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/geradorMicrossegundo.v  ;         ;
+; triState.v                       ; yes             ; User Verilog HDL File  ; /home/aluno/Downloads/pblfinalv2/pblfinalv1/triState.v              ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 2,471     ;
+;                                             ;           ;
+; Total combinational functions               ; 2440      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 1187      ;
+;     -- 3 input functions                    ; 493       ;
+;     -- <=2 input functions                  ; 760       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 2086      ;
+;     -- arithmetic mode                      ; 354       ;
+;                                             ;           ;
+; Total registers                             ; 944       ;
+;     -- Dedicated logic registers            ; 944       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 16        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 785       ;
+; Total fan-out                               ; 10667     ;
+; Average fan-out                             ; 3.12      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                        ;
++--------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Entity Name           ; Library Name ;
++--------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; |mainV3                                                ; 2440 (0)            ; 944 (0)                   ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |mainV3                                                                                                         ; mainV3                ; work         ;
+;    |baudrate_gen:baudrate_gen_0|                       ; 42 (42)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|baudrate_gen:baudrate_gen_0                                                                             ; baudrate_gen          ; work         ;
+;    |decodificador:decodificador_0|                     ; 40 (40)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|decodificador:decodificador_0                                                                           ; decodificador         ; work         ;
+;    |escalonador:escalonador_0|                         ; 2112 (307)          ; 784 (110)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0                                                                               ; escalonador           ; work         ;
+;       |interface0:interface_2|                         ; 228 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_2                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 194 (193)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_3|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_3                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_4|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_4                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_5|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_5                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_6|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_6                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_7|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_7                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0:interface_8|                         ; 233 (34)            ; 85 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_8                                                        ; interface0            ; work         ;
+;          |DHT11:ints_dht11|                            ; 199 (198)           ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11                                       ; DHT11                 ; work         ;
+;             |TRIS:TRIS_DATA|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|TRIS:TRIS_DATA                        ; TRIS                  ; work         ;
+;       |interface0_modificada:interface_1|              ; 179 (42)            ; 79 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1                                             ; interface0_modificada ; work         ;
+;          |dht:dht_0|                                   ; 126 (125)           ; 52 (52)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0                                   ; dht                   ; work         ;
+;             |triState:tris0|                           ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|triState:tris0                    ; triState              ; work         ;
+;          |geradorMicrossegundo:geradorMicrossegundo_0| ; 11 (11)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0 ; geradorMicrossegundo  ; work         ;
+;    |receiver2b:receiver2b_0|                           ; 120 (120)           ; 68 (68)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|receiver2b:receiver2b_0                                                                                 ; receiver2b            ; work         ;
+;    |transmitter3b:transmitter3b_0|                     ; 126 (126)           ; 39 (39)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mainV3|transmitter3b:transmitter3b_0                                                                           ; transmitter3b         ; work         ;
++--------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------+
+; State Machine - |mainV3|transmitter3b:transmitter3b_0|state      ;
++-------------+------------+------------+-------------+------------+
+; Name        ; state.STOP ; state.DATA ; state.START ; state.IDLE ;
++-------------+------------+------------+-------------+------------+
+; state.IDLE  ; 0          ; 0          ; 0           ; 0          ;
+; state.START ; 0          ; 0          ; 1           ; 1          ;
+; state.DATA  ; 0          ; 1          ; 0           ; 1          ;
+; state.STOP  ; 1          ; 0          ; 0           ; 1          ;
++-------------+------------+------------+-------------+------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------+
+; State Machine - |mainV3|decodificador:decodificador_0|state ;
++----------------+----------+---------------+-----------------+
+; Name           ; state.00 ; state.sending ; state.decoding  ;
++----------------+----------+---------------+-----------------+
+; state.00       ; 0        ; 0             ; 0               ;
+; state.decoding ; 1        ; 0             ; 1               ;
+; state.sending  ; 1        ; 1             ; 0               ;
++----------------+----------+---------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|state                                                                                                                                                                                                                                                                                                                            ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------+--------------------+
+; Name               ; state.TEMP_CONT_S8 ; state.UMID_CONT_S7 ; state.TEMP_CONT_S7 ; state.UMID_CONT_S6 ; state.TEMP_CONT_S6 ; state.UMID_CONT_S5 ; state.TEMP_CONT_S5 ; state.UMID_CONT_S4 ; state.TEMP_CONT_S4 ; state.UMID_CONT_S3 ; state.TEMP_CONT_S3 ; state.UMID_CONT_S2 ; state.TEMP_CONT_S2 ; state.UMID_CONT_S1 ; state.TEMP_CONT_S1 ; state.COMMAND ; state.UMID_CONT_S8 ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------+--------------------+
+; state.COMMAND      ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0             ; 0                  ;
+; state.TEMP_CONT_S1 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 1             ; 0                  ;
+; state.UMID_CONT_S1 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S2 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S2 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S3 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S3 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S4 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S4 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S5 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S5 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S6 ; 0                  ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S6 ; 0                  ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S7 ; 0                  ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S7 ; 0                  ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.TEMP_CONT_S8 ; 1                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 0                  ;
+; state.UMID_CONT_S8 ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 0                  ; 1             ; 1                  ;
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+---------------+--------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_8|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_7|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_6|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_5|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_4|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_3|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_2|state ;
++--------------+--------------+------------+------------+------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00               ;
++--------------+--------------+------------+------------+------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                      ;
+; state.read   ; 0            ; 0          ; 1          ; 1                      ;
+; state.send   ; 0            ; 1          ; 0          ; 1                      ;
+; state.finish ; 1            ; 0          ; 0          ; 1                      ;
++--------------+--------------+------------+------------+------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE                                                      ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; Name        ; STATE.START ; STATE.S9 ; STATE.S8 ; STATE.S7 ; STATE.S6 ; STATE.S5 ; STATE.S4 ; STATE.S3 ; STATE.S2 ; STATE.S1 ; STATE.S0 ; STATE.STOP ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+; STATE.STOP  ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0          ;
+; STATE.S0    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 1          ;
+; STATE.S1    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 1          ;
+; STATE.S2    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 1          ;
+; STATE.S3    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S4    ; 0           ; 0        ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S5    ; 0           ; 0        ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S6    ; 0           ; 0        ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S7    ; 0           ; 0        ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S8    ; 0           ; 0        ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.S9    ; 0           ; 1        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
+; STATE.START ; 1           ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 0        ; 1          ;
++-------------+-------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|state ;
++--------------+--------------+------------+------------+-----------------------------------+
+; Name         ; state.finish ; state.send ; state.read ; state.00                          ;
++--------------+--------------+------------+------------+-----------------------------------+
+; state.00     ; 0            ; 0          ; 0          ; 0                                 ;
+; state.read   ; 0            ; 0          ; 1          ; 1                                 ;
+; state.send   ; 0            ; 1          ; 0          ; 1                                 ;
+; state.finish ; 1            ; 0          ; 0          ; 1                                 ;
++--------------+--------------+------------+------------+-----------------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state                                                                                                                   ;
++---------------------------+------------+-------------------+------------------+----------------+---------------------------+----------------------+------------------+---------------------+-------------+------------+
+; Name                      ; state.STOP ; state.WAIT_SIGNAL ; state.DETECT_BIT ; state.TRANSMIT ; state.DHT11_HIGH_RESPONSE ; state.DHT11_RESPONSE ; state.WAIT_DHT11 ; state.DETECT_SIGNAL ; state.START ; state.0000 ;
++---------------------------+------------+-------------------+------------------+----------------+---------------------------+----------------------+------------------+---------------------+-------------+------------+
+; state.0000                ; 0          ; 0                 ; 0                ; 0              ; 0                         ; 0                    ; 0                ; 0                   ; 0           ; 0          ;
+; state.START               ; 0          ; 0                 ; 0                ; 0              ; 0                         ; 0                    ; 0                ; 0                   ; 1           ; 1          ;
+; state.DETECT_SIGNAL       ; 0          ; 0                 ; 0                ; 0              ; 0                         ; 0                    ; 0                ; 1                   ; 0           ; 1          ;
+; state.WAIT_DHT11          ; 0          ; 0                 ; 0                ; 0              ; 0                         ; 0                    ; 1                ; 0                   ; 0           ; 1          ;
+; state.DHT11_RESPONSE      ; 0          ; 0                 ; 0                ; 0              ; 0                         ; 1                    ; 0                ; 0                   ; 0           ; 1          ;
+; state.DHT11_HIGH_RESPONSE ; 0          ; 0                 ; 0                ; 0              ; 1                         ; 0                    ; 0                ; 0                   ; 0           ; 1          ;
+; state.TRANSMIT            ; 0          ; 0                 ; 0                ; 1              ; 0                         ; 0                    ; 0                ; 0                   ; 0           ; 1          ;
+; state.DETECT_BIT          ; 0          ; 0                 ; 1                ; 0              ; 0                         ; 0                    ; 0                ; 0                   ; 0           ; 1          ;
+; state.WAIT_SIGNAL         ; 0          ; 1                 ; 0                ; 0              ; 0                         ; 0                    ; 0                ; 0                   ; 0           ; 1          ;
+; state.STOP                ; 1          ; 0                 ; 0                ; 0              ; 0                         ; 0                    ; 0                ; 0                   ; 0           ; 1          ;
++---------------------------+------------+-------------------+------------------+----------------+---------------------------+----------------------+------------------+---------------------+-------------+------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------+
+; State Machine - |mainV3|receiver2b:receiver2b_0|state ;
++-------------+-------------+------------+--------------+
+; Name        ; state.START ; state.STOP ; state.DATA   ;
++-------------+-------------+------------+--------------+
+; state.START ; 0           ; 0          ; 0            ;
+; state.DATA  ; 1           ; 0          ; 1            ;
+; state.STOP  ; 1           ; 1          ; 0            ;
++-------------+-------------+------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                  ;
++--------------------------------------------------------------------------------+--------------------------------------------------------------------+
+; Register name                                                                  ; Reason for Removal                                                 ;
++--------------------------------------------------------------------------------+--------------------------------------------------------------------+
+; decodificador:decodificador_0|reg_data_transmitter[12..15]                     ; Merged with decodificador:decodificador_0|reg_data_transmitter[11] ;
+; transmitter3b:transmitter3b_0|state~3                                          ; Lost fanout                                                        ;
+; transmitter3b:transmitter3b_0|state~4                                          ; Lost fanout                                                        ;
+; escalonador:escalonador_0|state~3                                              ; Lost fanout                                                        ;
+; escalonador:escalonador_0|state~4                                              ; Lost fanout                                                        ;
+; escalonador:escalonador_0|state~5                                              ; Lost fanout                                                        ;
+; escalonador:escalonador_0|state~6                                              ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|state~6                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|state~7                       ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE~14     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE~15     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE~16     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE~17     ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|state~6            ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|state~7            ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state~12 ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state~13 ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state~14 ; Lost fanout                                                        ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state~15 ; Lost fanout                                                        ;
+; decodificador:decodificador_0|reg_data_transmitter[11]                         ; Stuck at GND due to stuck port data_in                             ;
+; Total Number of Removed Registers = 59                                         ;                                                                    ;
++--------------------------------------------------------------------------------+--------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 944   ;
+; Number of registers using Synchronous Clear  ; 269   ;
+; Number of registers using Synchronous Load   ; 14    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 725   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                              ;
++---------------------------------------------------------------------------------+---------+
+; Inverted Register                                                               ; Fan out ;
++---------------------------------------------------------------------------------+---------+
+; transmitter3b:transmitter3b_0|out                                               ; 3       ;
+; transmitter3b:transmitter3b_0|counter[0]                                        ; 10      ;
+; transmitter3b:transmitter3b_0|counter[1]                                        ; 10      ;
+; transmitter3b:transmitter3b_0|counter[4]                                        ; 6       ;
+; transmitter3b:transmitter3b_0|counter[2]                                        ; 5       ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|send      ; 2       ;
+; escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|direction ; 7       ;
+; Total number of inverted registers = 7                                          ;         ;
++---------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
+; 4:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |mainV3|transmitter3b:transmitter3b_0|counter[18]                                         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|command[3]                                              ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |mainV3|receiver2b:receiver2b_0|counter[14]                                               ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_8|r_data_int[5]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_7|r_data_int[3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_6|r_data_int[3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_5|r_data_int[3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_4|r_data_int[0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_3|r_data_int[3]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_2|r_data_int[0]                    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; Yes        ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|r_data_int[5]         ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|index[0]    ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |mainV3|decodificador:decodificador_0|reg_data_transmitter[21]                            ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|index[3]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|index[0]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|index[2]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|index[3]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|index[3]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|index[2]        ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|index[0]        ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |mainV3|decodificador:decodificador_0|reg_data_transmitter[2]                             ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |mainV3|decodificador:decodificador_0|reg_data_transmitter[8]                             ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_8|r_comandos[2]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_7|r_comandos[0]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_6|r_comandos[5]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_5|r_comandos[2]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_4|r_comandos[1]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_3|r_comandos[2]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_2|r_comandos[2]                    ;
+; 11:1               ; 6 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|r_comandos[1]         ;
+; 20:1               ; 15 bits   ; 195 LEs       ; 15 LEs               ; 180 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|counter[11] ;
+; 6:1                ; 15 bits   ; 60 LEs        ; 15 LEs               ; 45 LEs                 ; Yes        ; |mainV3|escalonador:escalonador_0|command_sensor[7]                                       ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|COUNTER[16]     ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|COUNTER[3]      ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|COUNTER[0]      ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|COUNTER[6]      ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|COUNTER[19]     ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|COUNTER[14]     ;
+; 23:1               ; 26 bits   ; 390 LEs       ; 104 LEs              ; 286 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|COUNTER[0]      ;
+; 13:1               ; 32 bits   ; 256 LEs       ; 32 LEs               ; 224 LEs                ; Yes        ; |mainV3|escalonador:escalonador_0|counter[10]                                             ;
+; 261:1              ; 14 bits   ; 2436 LEs      ; 70 LEs               ; 2366 LEs               ; Yes        ; |mainV3|escalonador:escalonador_0|response_sensor[3]                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |mainV3|transmitter3b:transmitter3b_0|counter[4]                                          ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |mainV3|transmitter3b:transmitter3b_0|Selector2                                           ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_8|Selector11                       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_7|Selector11                       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_6|Selector8                        ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_5|Selector11                       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_4|Selector8                        ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_3|Selector11                       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_2|Selector8                        ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|Selector10            ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|STATE           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mainV3|escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|STATE           ;
+; 20:1               ; 6 bits    ; 78 LEs        ; 36 LEs               ; 42 LEs                 ; No         ; |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|Selector74  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: baudrate_gen:baudrate_gen_0 ;
++----------------+------------------------------+--------------------------+
+; Parameter Name ; Value                        ; Type                     ;
++----------------+------------------------------+--------------------------+
+; DIVISOR        ; 0000000000000001010001011000 ; Unsigned Binary          ;
++----------------+------------------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: receiver2b:receiver2b_0 ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; START          ; 0     ; Signed Integer                              ;
+; DATA           ; 1     ; Signed Integer                              ;
+; STOP           ; 2     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0 ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; COMMAND        ; 0     ; Signed Integer                                ;
+; TEMP_CONT_S1   ; 1     ; Signed Integer                                ;
+; UMID_CONT_S1   ; 2     ; Signed Integer                                ;
+; TEMP_CONT_S2   ; 3     ; Signed Integer                                ;
+; UMID_CONT_S2   ; 4     ; Signed Integer                                ;
+; TEMP_CONT_S3   ; 5     ; Signed Integer                                ;
+; UMID_CONT_S3   ; 6     ; Signed Integer                                ;
+; TEMP_CONT_S4   ; 7     ; Signed Integer                                ;
+; UMID_CONT_S4   ; 8     ; Signed Integer                                ;
+; TEMP_CONT_S5   ; 9     ; Signed Integer                                ;
+; UMID_CONT_S5   ; 10    ; Signed Integer                                ;
+; TEMP_CONT_S6   ; 11    ; Signed Integer                                ;
+; UMID_CONT_S6   ; 12    ; Signed Integer                                ;
+; TEMP_CONT_S7   ; 13    ; Signed Integer                                ;
+; UMID_CONT_S7   ; 14    ; Signed Integer                                ;
+; TEMP_CONT_S8   ; 15    ; Signed Integer                                ;
+; UMID_CONT_S8   ; 16    ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0 ;
++---------------------+-------+--------------------------------------------------------------------------------------+
+; Parameter Name      ; Value ; Type                                                                                 ;
++---------------------+-------+--------------------------------------------------------------------------------------+
+; IDLE                ; 0     ; Signed Integer                                                                       ;
+; START               ; 1     ; Signed Integer                                                                       ;
+; DETECT_SIGNAL       ; 2     ; Signed Integer                                                                       ;
+; WAIT_DHT11          ; 3     ; Signed Integer                                                                       ;
+; DHT11_RESPONSE      ; 4     ; Signed Integer                                                                       ;
+; DHT11_HIGH_RESPONSE ; 5     ; Signed Integer                                                                       ;
+; TRANSMIT            ; 6     ; Signed Integer                                                                       ;
+; DETECT_BIT          ; 7     ; Signed Integer                                                                       ;
+; WAIT_SIGNAL         ; 8     ; Signed Integer                                                                       ;
+; STOP                ; 9     ; Signed Integer                                                                       ;
++---------------------+-------+--------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11 ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------------+
+; S0             ; 1     ; Signed Integer                                                                        ;
+; S1             ; 2     ; Signed Integer                                                                        ;
+; S2             ; 3     ; Signed Integer                                                                        ;
+; S3             ; 4     ; Signed Integer                                                                        ;
+; S4             ; 5     ; Signed Integer                                                                        ;
+; S5             ; 6     ; Signed Integer                                                                        ;
+; S6             ; 7     ; Signed Integer                                                                        ;
+; S7             ; 8     ; Signed Integer                                                                        ;
+; S8             ; 9     ; Signed Integer                                                                        ;
+; S9             ; 10    ; Signed Integer                                                                        ;
+; STOP           ; 0     ; Signed Integer                                                                        ;
+; START          ; 11    ; Signed Integer                                                                        ;
++----------------+-------+---------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: transmitter3b:transmitter3b_0 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; IDLE           ; 0     ; Signed Integer                                    ;
+; START          ; 1     ; Signed Integer                                    ;
+; DATA           ; 2     ; Signed Integer                                    ;
+; STOP           ; 3     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "transmitter3b:transmitter3b_0" ;
++-----------+--------+----------+---------------------------+
+; Port      ; Type   ; Severity ; Details                   ;
++-----------+--------+----------+---------------------------+
+; state_out ; Output ; Info     ; Explicitly unconnected    ;
++-----------+--------+----------+---------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|TRIS:TRIS_DATA"                                                                                       ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; READ ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (40 bits) it drives.  The 39 most-significant bit(s) in the port expression will be connected to GND. ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11"                        ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; HUM_FLOAT  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; TEMP_FLOAT ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; CRC        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; WAIT       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; DEBUG      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0"                    ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; hum_float  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; temp_float ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; check_sum  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "escalonador:escalonador_0"                                                                                                                        ;
++-------------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                                                                              ;
++-------------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------+
+; response_sensor_o ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (6 bits) it drives; bit(s) "response_sensor_o[7..6]" have no fanouts ;
+; state_o           ; Output ; Info     ; Explicitly unconnected                                                                                                               ;
++-------------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------+
+; Port Connectivity Checks: "receiver2b:receiver2b_0"    ;
++-----------+--------+----------+------------------------+
+; Port      ; Type   ; Severity ; Details                ;
++-----------+--------+----------+------------------------+
+; state_out ; Output ; Info     ; Explicitly unconnected ;
++-----------+--------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 16                          ;
+; cycloneiii_ff         ; 944                         ;
+;     ENA               ; 470                         ;
+;     ENA SCLR          ; 241                         ;
+;     ENA SLD           ; 14                          ;
+;     SCLR              ; 28                          ;
+;     plain             ; 191                         ;
+; cycloneiii_io_obuf    ; 8                           ;
+; cycloneiii_lcell_comb ; 2442                        ;
+;     arith             ; 354                         ;
+;         2 data inputs ; 354                         ;
+;     normal            ; 2088                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 22                          ;
+;         2 data inputs ; 385                         ;
+;         3 data inputs ; 493                         ;
+;         4 data inputs ; 1187                        ;
+;                       ;                             ;
+; Max LUT depth         ; 11.70                       ;
+; Average LUT depth     ; 5.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Mon Sep 18 15:19:09 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pblsd -c pblsd
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file dht_dos_caras.v
+    Info (12023): Found entity 1: dht_dos_caras File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht_dos_caras.v Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file interface0_modificada.v
+    Info (12023): Found entity 1: interface0_modificada File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0_modificada.v Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file mainV3.v
+    Info (12023): Found entity 1: mainV3 File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file baudrate_gen.v
+    Info (12023): Found entity 1: baudrate_gen File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/baudrate_gen.v Line: 1
+Warning (10090): Verilog HDL syntax warning at uart2b.v(17): extra block comment delimiter characters /* within block comment File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/uart2b.v Line: 17
+Info (12021): Found 1 design units, including 1 entities, in source file uart2b.v
+    Info (12023): Found entity 1: uart2b File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/uart2b.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file receiver2b.v
+    Info (12023): Found entity 1: receiver2b File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/receiver2b.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file DHT11.v
+    Info (12023): Found entity 1: DHT11 File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file transmitter3b.v
+    Info (12023): Found entity 1: transmitter3b File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/transmitter3b.v Line: 1
+Warning (10238): Verilog Module Declaration warning at decodificador.v(12): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "decodificador" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file decodificador.v
+    Info (12023): Found entity 1: decodificador File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file escalonador.v
+    Info (12023): Found entity 1: escalonador File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/escalonador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file interface0.v
+    Info (12023): Found entity 1: interface0 File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0.v Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file TRIS.v
+    Info (12023): Found entity 1: TRIS File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 1
+Warning (10275): Verilog HDL Module Instantiation warning at main.v(53): ignored dangling comma in List of Port Connections File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/main.v Line: 53
+Warning (10238): Verilog Module Declaration warning at main.v(6): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "main" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/main.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file main.v
+    Info (12023): Found entity 1: main File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/main.v Line: 1
+Warning (10275): Verilog HDL Module Instantiation warning at testDeco.v(69): ignored dangling comma in List of Port Connections File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/testDeco.v Line: 69
+Info (12021): Found 1 design units, including 1 entities, in source file testDeco.v
+    Info (12023): Found entity 1: testDeco File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/testDeco.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file dht.v
+    Info (12023): Found entity 1: dht File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 12
+Info (12021): Found 1 design units, including 1 entities, in source file geradorMicrossegundo.v
+    Info (12023): Found entity 1: geradorMicrossegundo File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/geradorMicrossegundo.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file triState.v
+    Info (12023): Found entity 1: triState File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/triState.v Line: 8
+Warning (10236): Verilog HDL Implicit Net warning at decodificador.v(43): created implicit net for "reg_endereco" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v Line: 43
+Info (12127): Elaborating entity "mainV3" for the top level hierarchy
+Info (12128): Elaborating entity "baudrate_gen" for hierarchy "baudrate_gen:baudrate_gen_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 27
+Info (12128): Elaborating entity "receiver2b" for hierarchy "receiver2b:receiver2b_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 35
+Info (12128): Elaborating entity "escalonador" for hierarchy "escalonador:escalonador_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 49
+Info (10264): Verilog HDL Case Statement information at escalonador.v(225): all case item expressions in this case statement are onehot File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/escalonador.v Line: 225
+Info (12128): Elaborating entity "interface0_modificada" for hierarchy "escalonador:escalonador_0|interface0_modificada:interface_1" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/escalonador.v Line: 93
+Warning (10036): Verilog HDL or VHDL warning at interface0_modificada.v(25): object "r_Rst" assigned a value but never read File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0_modificada.v Line: 25
+Info (12128): Elaborating entity "geradorMicrossegundo" for hierarchy "escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0_modificada.v Line: 48
+Warning (10230): Verilog HDL assignment warning at geradorMicrossegundo.v(20): truncated value with size 32 to match size of target (6) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/geradorMicrossegundo.v Line: 20
+Info (12128): Elaborating entity "dht" for hierarchy "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0_modificada.v Line: 61
+Warning (10230): Verilog HDL assignment warning at dht.v(73): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 73
+Warning (10230): Verilog HDL assignment warning at dht.v(82): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 82
+Warning (10230): Verilog HDL assignment warning at dht.v(91): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 91
+Warning (10230): Verilog HDL assignment warning at dht.v(100): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 100
+Warning (10230): Verilog HDL assignment warning at dht.v(113): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 113
+Warning (10230): Verilog HDL assignment warning at dht.v(128): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 128
+Warning (10230): Verilog HDL assignment warning at dht.v(145): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 145
+Warning (10230): Verilog HDL assignment warning at dht.v(153): truncated value with size 32 to match size of target (6) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 153
+Warning (10230): Verilog HDL assignment warning at dht.v(158): truncated value with size 32 to match size of target (15) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 158
+Info (12128): Elaborating entity "triState" for hierarchy "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|triState:tris0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/dht.v Line: 36
+Info (12128): Elaborating entity "interface0" for hierarchy "escalonador:escalonador_0|interface0:interface_2" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/escalonador.v Line: 104
+Info (12128): Elaborating entity "DHT11" for hierarchy "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/interface0.v Line: 59
+Info (12128): Elaborating entity "TRIS" for hierarchy "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|TRIS:TRIS_DATA" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:decodificador_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 62
+Warning (10036): Verilog HDL or VHDL warning at decodificador.v(43): object "reg_endereco" assigned a value but never read File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v Line: 43
+Warning (10230): Verilog HDL assignment warning at decodificador.v(43): truncated value with size 8 to match size of target (1) File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/decodificador.v Line: 43
+Info (12128): Elaborating entity "transmitter3b" for hierarchy "transmitter3b:transmitter3b_0" File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 72
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12030): Port "READ" on the entity instantiation of "TRIS_DATA" is connected to a signal of width 40. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic. File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/DHT11.v Line: 43
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|triState:tris0|read" to the node "escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/triState.v Line: 13
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_2|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_3|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_4|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_5|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_6|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_7|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+    Warning (13047): Converted the fan-out from the tri-state buffer "escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|TRIS:TRIS_DATA|READ" to the node "escalonador:escalonador_0|interface0:interface_8|DHT11:ints_dht11|always0" into an OR gate File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/TRIS.v Line: 6
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "coluna" is stuck at GND File: /home/aluno/Downloads/pblfinalv2/pblfinalv1/mainV3.v Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 54 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /home/aluno/Downloads/pblfinalv2/pblfinalv1/output_files/pblsd.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2491 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21060): Implemented 8 bidirectional pins
+    Info (21061): Implemented 2475 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
+    Info: Peak virtual memory: 457 megabytes
+    Info: Processing ended: Mon Sep 18 15:19:19 2023
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:16
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/aluno/Downloads/pblfinalv2/pblfinalv1/output_files/pblsd.map.smsg.
+
+
