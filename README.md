@@ -62,7 +62,7 @@ Nesta seção, abordaremos aspectos relacionados à comunicação UART, incluind
 - Luis
 
 ## DHT11
-
+O sensor DHT11 é um sensor de umidade e temperatura amplamente utilizado em projetos de eletrônica e automação. Ele é conhecido por sua simplicidade de uso e baixo custo. O DHT11 é capaz de medir a temperatura ambiente e a umidade relativa do ar com precisão razoável para aplicações simples.
 
 ## Gerenciamento e processamento da informação
 Nesta seção, detalharemos o gerenciamento e o processamento da informação no sistema Nirvan, incluindo:
