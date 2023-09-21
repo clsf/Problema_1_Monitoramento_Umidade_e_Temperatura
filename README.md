@@ -14,25 +14,27 @@ Neste projeto, apresentamos uma contextualização do desenvolvimento do sistema
 - Thiago Jesus
 
 ## :page_facing_up: Sumário
-- Recursos utilizados
-- Como executar
-  - Em C 
-  - FPGA 
-- Exemplo de montagem
-- UART
-  - Escrita e Leitura em C 
-  - Receiver e Transmitter 
-  - Baud Rate 
-- DHT
-  - Fundamentação teórica e módulo 
-- Gerenciamento e processamento da informação
-  - Interface (Nicassio)
-  - Escalonador (Luis)
-  - Decodificador (Nicassio)
-- Conclusões
-- Anexos
+## Sumário
+- [Recursos utilizados](#recursos-utilizados)
+- [Como executar](#como-executar)
+  - [Em C](#em-c)
+  - [FPGA](#fpga)
+- [Exemplo de montagem](#exemplo-de-montagem)
+- [UART](#uart)
+  - [Escrita e Leitura em C](#escrita-e-leitura-em-c)
+  - [Receiver e Transmitter](#receiver-e-transmitter)
+  - [Baud Rate](#baud-rate)
+- [DHT](#dht)
+  - [Fundamentação teórica e módulo](#fundamentação-teórica-e-módulo)
+- [Gerenciamento e processamento da informação](#gerenciamento-e-processamento-da-informação)
+  - [Interface](#interface)
+  - [Escalonador](#escalonador)
+  - [Decodificador](#decodificador)
+- [Conclusões](#conclusões)
+- [Anexos](#anexos)
 
-## Recursos utilizados
+
+## Recursos utilizados 
 Nesta seção, descreveremos os recursos utilizados no projeto Nirvan.
 
 ## Como executar
