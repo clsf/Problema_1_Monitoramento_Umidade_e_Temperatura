@@ -46,17 +46,33 @@ Nesta seção, forneceremos instruções sobre como executar o projeto Nirvan na
 1. **Abra o Projeto:**
    - Utilize o software Quartus.
    - Abra o projeto "pblsd.qpf" selecionando a opção "Abrir Projeto" ou similar no Quartus.
+     
+     <div align="center">
+        <img src="/img/parte1FPGA.png" alt="Abrindo o projeto" width="350" height="350">
+    </div>
 
 2. **Compilação do Projeto:**
    - Verifique se o arquivo "mainV3.v" está configurado como o módulo de nível superior (TOP-LEVEL) do projeto.
    - Compile o projeto selecionando a opção de compilação no Quartus.
+     
+     <div align="center">
+        <img src="/img/parte2FPGA.png" alt="Compilando o projeto" width="350" height="350">
+    </div>
 
-3. **Configuração da Pinagem da FPGA:**
+3. **Conferindo da Pinagem da FPGA:**
    - Confirme a configuração da pinagem da FPGA para garantir que esteja corretamente definida de acordo com as especificações do projeto.
+  
+     <div align="center">
+        <img src="/img/parte3FPGA.png" alt="Conferindo a pinagem" width="350" height="350">
+    </div>
 
 4. **Programação na FPGA:**
    - Certifique-se de que a FPGA esteja conectada ao computador via USB ou outra interface apropriada.
    - Utilize a opção de programação no Quartus para carregar o projeto compilado na FPGA conectada.
+    <div align="center">
+        <img src="/img/parte4FPGA.png" alt="Iniciando a programação da FPGA" width="350" height="350">   <img src="/img/parte5FPGA.png" alt="Programando a FPGA" width="350" height="350">
+      
+    </div>
 
 ## Exemplo de montagem
 Nesta seção, apresentaremos um exemplo de montagem do sistema Nirvan.
