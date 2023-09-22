@@ -127,10 +127,10 @@ Respostas recebidas através do terminal.
 Para a realização da comunicação entre o computador e a FPGA foi necessário implementar o protocolo de comunicação serial UART em ambos dispositivos. O protocolo UART (Universal Asynchronous Receiver/Transmitter) é um método de comunicação serial assíncrona que transfere dados entre dispositivos. Ele utiliza um sistema de start bits, dados, stop bits para encapsular os dados a serem transmitidos. As linhas de RX (Receiver) e TX (Transmitter) são usadas para receber e transmitir dados bidirecionalmente. A comunicação UART também envolve a configuração da taxa de transmissão, chamada de baud rate, para determinar a velocidade da transferência de dados. o baud rate escolhido para ambas as implementações foi de 9600 bps.
 
 <div align="center">
-  <p>
-    <img src="/img/serial.png" alt="Formato da Transmissão via UART">
-    Formato da Transmissão via UART. Fonte: <a href="https://www.rohde-schwarz.com/br/produtos/teste-e-medicao/essentials-test-equipment/digital-oscilloscopes/compreender-uart_254524.html">rohde&schwarz</a>
-  </p>
+  <img src="/img/serial.png" alt="Diagrama de Estados do Receiver">
+   <p>
+      Diagrama de Estados do Receiver. Fonte: <a href="https://www.rohde-schwarz.com/br/produtos/teste-e-medicao/essentials-test-equipment/digital-oscilloscopes/compreender-uart_254524.html">rohde&schwarz</a>
+    </p>
 </div>
 
 ### Escrita e Leitura em C
