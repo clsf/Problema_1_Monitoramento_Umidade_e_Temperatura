@@ -120,12 +120,12 @@ Para fazer a comunicação por parte do computador, foram desenvolvidos dois pro
 
 Além das flags de escrita e leitura já explicadas, ambos os códigos utilizam as seguintes flags para configuração da porta serial:
 
-  <b>IGNPAR</b>: Usada para ignorar erros de paridade.
-  <b>CS8</b>: Define o tamanho dos caracteres da comunicação serial, nesse caso cada caractere é composto por 8 bits.
-  <b>CLOCAL</b>: Indica que a entrada/saída serial está em modo local, não verificando a presença de um modem ou dispositivo de comunicação.
-  <b>CREAD</b>: Indica que a porta serial está pronta para receber dados, ou seja, habilita o receiver.
-  <b>TCIFLUSH</b>: Usada para descartar dados na fila de entrada da porta serial que não foram lidos.
-  <b>TCSANOW</b>: Aplica imediatamente as alterações nas configurações da porta serial.
+  <b>IGNPAR</b>: Usada para ignorar erros de paridade.<br>
+  <b>CS8</b>: Define o tamanho dos caracteres da comunicação serial, nesse caso cada caractere é composto por 8 bits.<br>
+  <b>CLOCAL</b>: Indica que a entrada/saída serial está em modo local, não verificando a presença de um modem ou dispositivo de comunicação.<br>
+  <b>CREAD</b>: Indica que a porta serial está pronta para receber dados, ou seja, habilita o receiver.<br>
+  <b>TCIFLUSH</b>: Usada para descartar dados na fila de entrada da porta serial que não foram lidos.<br>
+  <b>TCSANOW</b>: Aplica imediatamente as alterações nas configurações da porta serial.<br>
   <b>B9600</b>: Representa a velocidade da transmissão serial em baus, assim a velocidade nesse caso é de 9600 bauds.
 
 
