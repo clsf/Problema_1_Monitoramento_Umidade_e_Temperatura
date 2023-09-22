@@ -1,3 +1,11 @@
+/*
+Este módulo tem como objetivo de pegar os dados gerados pela interface, e a partir deles 
+organizar de uma forma que possa ser entendido pelo módulo transmitter, envia-los para o 
+transmitter,além de garantir que só obtenha sua conclusão após a decodificação e a transmissão 
+dos dados seja feita
+*/
+
+
 module decodificador(
 clk,
 comandos, 
@@ -25,7 +33,7 @@ input [7:0] data_sensor; //Informação da medida de temperatura ou umidadade
 input En; //Confirmação de recebimento de dados do sensor pelo módulo da interface  
 input done_transmittion; //Confirmação de envio de dados pelo transmissor 
 input [7:0] endereco; // endereco do sensor em ascii 
-input wait_transmitter; //Bit respons´avel por informar que o transmitter iniciou a transmissao dos dados
+input wait_transmitter; //Bit responsavel por informar que o transmitter iniciou a transmissao dos dados
 
 
 output [23:0] data_transmitter; //Saida dos dados do transmissor  
@@ -50,19 +58,19 @@ localparam idle =  2'b00,
 			  
 
 /* Tabela de comandos de resposta:
-comandos = 000001 =>Sensor com problema: 00000001
-comandos = 000010 =>Sensor funcionando normalmente: 00000010	  
-comandos = 000100 =>Medida de umidade: 00000011
-comandos = 001000 =>Medida de temperatura: 00000100 
-comandos = 010000 =>Confirmação de desativação de sensoriamento contínuo de temperatura: 00000101
-comandos = 100000 =>Confirmação de desativação de sensoriamento contínuo de umidade: 00000110  
+(Comando recebido pela interface)comandos = 000001 =>(Comando que será enviado para o PC)Sensor com problema: 00000001
+(Comando recebido pela interface)comandos = 000010 =>(Comando que será enviado para o PC)Sensor funcionando normalmente: 00000010	  
+(Comando recebido pela interface)comandos = 000100 =>(Comando que será enviado para o PC)Medida de umidade: 00000011
+(Comando recebido pela interface)comandos = 001000 =>(Comando que será enviado para o PC)Medida de temperatura: 00000100 
+(Comando recebido pela interface)comandos = 010000 =>(Comando que será enviado para o PC)Confirmação de desativação de sensoriamento contínuo de temperatura: 00000101
+(Comando recebido pela interface)comandos = 100000 =>(Comando que será enviado para o PC)Confirmação de desativação de sensoriamento contínuo de umidade: 00000110  
 */
 			  
 			  		  
 			  
 always @(posedge clk) begin 
 		case(state)
-			idle: 
+			idle://Estado em que se espera o bit de start para iniciar sem
 					begin
 					
 						if(En == 1'b1)begin 
@@ -72,11 +80,11 @@ always @(posedge clk) begin
 							end
 			
 					end
-			decoding://Estado responsável por decodificar os dados que irão ser enviados para o transmissor
+			decoding://Estado responsável por decodificar e organizar os dados que irão ser enviados para o transmissor
 					begin 
 							 
 							if(comandos == 6'b000001 )begin //Se o sensor estiver com problema
-								
+	
 								reg_data_transmitter[23:16] = endereco; //atribuindo o primeiro byte do endereço do sensor
 								reg_data_transmitter[15:8] = 8'b00000001; //Atribuindo o commando de resposta de sensor com problema
 								reg_data_transmitter[7:0] = 8'b10000000; //Atribuindo um valor a quando o sensor estiver com problema

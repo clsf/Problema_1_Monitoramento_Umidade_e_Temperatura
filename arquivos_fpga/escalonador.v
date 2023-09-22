@@ -83,7 +83,7 @@ interface0_modificada interface_1(
 );
 
 	
-interface0 interface_2(
+interface0_modificada interface_2(
 .i_Clock(clk), 
 .i_En(en_sensors[1]), 
 .i_request(command_sensor), 
@@ -93,7 +93,7 @@ interface0 interface_2(
 .o_done_i1(done_sensors[1]) 
 );
 
-interface0 interface_3(
+interface0_modificada interface_3(
 .i_Clock(clk), 
 .i_En(en_sensors[2]), 
 .i_request(command_sensor), 
@@ -103,7 +103,7 @@ interface0 interface_3(
 .o_done_i1(done_sensors[2]) 
 );
 
-interface0 interface_4(
+interface0_modificada interface_4(
 .i_Clock(clk), 
 .i_En(en_sensors[3]), 
 .i_request(command_sensor), 
@@ -113,7 +113,7 @@ interface0 interface_4(
 .o_done_i1(done_sensors[3]) 
 );
 
-interface0 interface_5(
+interface0_modificada interface_5(
 .i_Clock(clk), 
 .i_En(en_sensors[4]), 
 .i_request(command_sensor), 
@@ -123,7 +123,7 @@ interface0 interface_5(
 .o_done_i1(done_sensors[4]) 
 );
 
-interface0 interface_6(
+interface0_modificada interface_6(
 .i_Clock(clk), 
 .i_En(en_sensors[5]), 
 .i_request(command_sensor), 
@@ -133,7 +133,7 @@ interface0 interface_6(
 .o_done_i1(done_sensors[5]) 
 );
 
-interface0 interface_7(
+interface0_modificada interface_7(
 .i_Clock(clk), 
 .i_En(en_sensors[6]), 
 .i_request(command_sensor), 
@@ -143,7 +143,7 @@ interface0 interface_7(
 .o_done_i1(done_sensors[6]) 
 );
 
-interface0 interface_8(
+interface0_modificada interface_8(
 .i_Clock(clk), 
 .i_En(en_sensors[7]), 
 .i_request(command_sensor), 
