@@ -10,6 +10,20 @@ O código desenvolvido consiste em três partes:
 - O módulo do DHT11 que consiste na máquina de estados que controla o funcionamento do sensor para que a solicitação dos dados seja feita de forma correta.
 - Os módulos de processamento das informações, responsáveis por decidir de acordo com o comando e o endereço do sensor recebidos, qual informação deve ser tratada para envio e de qual sensor deve ser retirada essa informação.
 
+<div align="center">
+  <img src="/img/general_diagram.png" alt="Diagrama Geral">
+   <p>
+      Diagrama Geral.
+    </p>
+</div>
+
+<div align="center">
+  <img src="/img/fpga_diagram.png" alt="Diagrama de Estados do Receiver">
+   <p>
+      Diagrama dos Modulos da FPGA.
+    </p>
+</div>
+
 ## :student: Equipe de desenvolvimento
 - Antonio
 - Cláudia
@@ -112,10 +126,12 @@ Respostas recebidas através do terminal.
 
 Para a realização da comunicação entre o computador e a FPGA foi necessário implementar o protocolo de comunicação serial UART em ambos dispositivos. O protocolo UART (Universal Asynchronous Receiver/Transmitter) é um método de comunicação serial assíncrona que transfere dados entre dispositivos. Ele utiliza um sistema de start bits, dados, stop bits para encapsular os dados a serem transmitidos. As linhas de RX (Receiver) e TX (Transmitter) são usadas para receber e transmitir dados bidirecionalmente. A comunicação UART também envolve a configuração da taxa de transmissão, chamada de baud rate, para determinar a velocidade da transferência de dados. o baud rate escolhido para ambas as implementações foi de 9600 bps.
 
-<p align="center">
-  <img src="/img/serial.png" alt="Formato da Transmissão via UART">
-  Formato da Transmissão via UART. <b>Fonte:</b> <a href="https://www.rohde-schwarz.com/br/produtos/teste-e-medicao/essentials-test-equipment/digital-oscilloscopes/compreender-uart_254524.html">rohde&schwarz</a>
-</p>
+<div align="center">
+  <p>
+    <img src="/img/serial.png" alt="Formato da Transmissão via UART">
+    Formato da Transmissão via UART. Fonte: <a href="https://www.rohde-schwarz.com/br/produtos/teste-e-medicao/essentials-test-equipment/digital-oscilloscopes/compreender-uart_254524.html">rohde&schwarz</a>
+  </p>
+</div>
 
 ### Escrita e Leitura em C
 Para fazer a comunicação por parte do computador, foram desenvolvidos dois programas, um para escrita e outro para leitura. 
