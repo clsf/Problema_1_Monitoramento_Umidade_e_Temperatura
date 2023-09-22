@@ -1,4 +1,4 @@
-# Problema_1_Monitoramento_Humidade_e_Temperatura
+# Problema 1 - Monitoramento Humidade e Temperatura
 Problema 1 da disciplina de Sistemas Digitais - Monitoramento de Temperatura e Humidade 
 
 ## Introdução
@@ -153,7 +153,9 @@ Além das flags de escrita e leitura já explicadas, ambos os códigos utilizam 
 
 ### Receiver e Transmitter
 **Módulo Receiver**
-Este módulo é responsável por receber dados seriais e reconstruir um valor de 16 bits a partir desses dados. Ele opera de acordo com uma taxa de baud_rate e detecta o início e o fim da transmissão de dados para coletar os bits intermediários e formar a saída de 16 bits.
+
+Este módulo é responsável por receber dados seriais e reconstruir um valor de 16 bits a partir desses dados. Ele opera de acordo com uma taxa de baud_rate e detecta o início e o fim da transmissão de dados para coletar os bits intermediários. O modulo foi feito utilizando Verilog comportamental e faz uso de uma FSM de Mealy, com 3 estados.
+
 
 **Funcionamento:**
 
@@ -169,6 +171,7 @@ Este módulo é responsável por receber dados seriais e reconstruir um valor de
 </div>
 
 **Módulo Transmitter**
+
 O módulo é responsável por transmitir dados em formato serial. Assim como o receiver ele opera em sincronia com uma taxa de baud_rate e usa um sinal de início (start) para indicar o início da transmissão dos dados. Os dados são transmitidos sequencialmente, começando pelo bit mais significativo, através de 3 bytes. O modulo foi feito utilizando Verilog comportamental e faz uso de uma FSM de Mealy, com 4 estados.
 
 **Funcionamento:**
