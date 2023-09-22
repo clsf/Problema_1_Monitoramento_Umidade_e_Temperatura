@@ -2,45 +2,66 @@
 Problema 1 da disciplina de Sistemas Digitais - Monitoramento de Temperatura e Humidade 
 
 ## Introdução
-Neste projeto, apresentamos uma contextualização do desenvolvimento do sistema Nirvan.
+<p align="justify"> O projeto consiste na implementação de um Sensor Digital na FPGA utilizando comunicação serial, no qual deve ser feita a medição de temperatura e umidade através do sensor DHT11. O protótipo desenvolvido implementa a comunicação serial entre dois dispositivos, um computador, responsável por enviar comandos e receber a resposta contendo as informações solicitadas, exibindo-as numa interface feita no terminal, e a FPGA Cyclone IV, responsável por receber as solicitações feitas pelo computador, recolher as informações pedidas do respectivo DHT11, tratá-las e enviá-las de volta ao solicitante.
+</p>
+O código desenvolvido consiste em três partes:
+
+- A comunicação serial, UART, dividida em comunicação por parte do computador, feita na linguagem de programação C, e na comunicação por parte da FPGA, onde fui utilizado a linguagem de descrição de hardware verilog.
+- O módulo do DHT11 que consiste na máquina de estados que controla o funcionamento do sensor para que a solicitação dos dados seja feita de forma correta.
+- Os módulos de processamento das informações, responsáveis por decidir de acordo com o comando e o endereço do sensor recebidos, qual informação deve ser tratada para envio e de qual sensor deve ser retirada essa informação.
 
 ## :student: Equipe de desenvolvimento
 - Antonio
 - Cláudia
 - Luis
-- Nirva
+- Nirvan
 
 ## :man_teacher: Tutor
 - Thiago Jesus
 
 ## :page_facing_up: Sumário
-- [Recursos utilizados](#recursos-utilizados)
-- [Como executar](#como-executar)
-  - [Em C](#em-c)
-  - [Para programar na FPGA](#para-programar-na-fpga)
-- [Exemplo de montagem](#exemplo-de-montagem)
-- [UART](#uart)
-  - [Escrita e Leitura em C](#escrita-e-leitura-em-c)
-  - [Receiver e Transmitter](#receiver-e-transmitter)
-  - [Baud Rate](#baud-rate)
-- [DHT](#dht)
-  - [Fundamentação teórica e módulo](#fundamentação-teórica-e-módulo)
-- [Gerenciamento e processamento da informação](#gerenciamento-e-processamento-da-informação)
-  - [Interface](#interface)
-  - [Escalonador](#escalonador)
-  - [Decodificador](#decodificador)
-- [Conclusões](#conclusões)
-- [Anexos](#anexos)
+- [Problema\_1\_Monitoramento\_Humidade\_e\_Temperatura](#problema_1_monitoramento_humidade_e_temperatura)
+  - [Introdução](#introdução)
+  - [:student: Equipe de desenvolvimento](#student-equipe-de-desenvolvimento)
+  - [:man\_teacher: Tutor](#man_teacher-tutor)
+  - [:page\_facing\_up: Sumário](#page_facing_up-sumário)
+  - [Recursos utilizados](#recursos-utilizados)
+  - [Como executar](#como-executar)
+    - [Em C](#em-c)
+    - [Para programar na FPGA](#para-programar-na-fpga)
+  - [Exemplo de montagem](#exemplo-de-montagem)
+  - [UART](#uart)
+    - [Escrita e Leitura em C](#escrita-e-leitura-em-c)
+    - [Receiver e Transmitter](#receiver-e-transmitter)
+    - [Baud Rate](#baud-rate)
+  - [DHT11](#dht11)
+  - [Gerenciamento e processamento da informação](#gerenciamento-e-processamento-da-informação)
+    - [Interface](#interface)
+    - [Escalonador](#escalonador)
+    - [Decodificador](#decodificador)
+  - [Conclusões](#conclusões)
+  - [Anexos](#anexos)
 
 
 ## Recursos utilizados 
-Nesta seção, descreveremos os recursos utilizados no projeto Nirvan.
+<ul>
+<li><a href="#fpgaimg">Kit de desenvolvimento Mercurio IV contendo a FPGA Cyclone IV (EP4CE30F23).</a></li>
+<li><a href="#dht11img">Sensor de Temperatura e Umidade DHT11.</a></li> 
+</ul>
 
 ## Como executar
-Nesta seção, forneceremos instruções sobre como executar o projeto Nirvan nas seguintes abordagens:
+Nesta seção, forneceremos instruções sobre como executar o projeto nas seguintes abordagens:
 
 ### Em C
-- Nirvan
+Para executar é necessário a utilização de um sistema operacional da família Linux.
+1. Abra a pasta arquivos_em_c que se encontra no diretório principal do projeto.
+2. Em seguida abra duas janelas de terminal dentro da pasta, um para cada arquivo do projeto.
+3. Compile os códigos com os seguintes comando:
+- Para o arquivo de escrita: <p><code>$ gcc MenuSensoresEscritav2.c -o writer</code></p>
+- Para o arquivo de leitura: <p><code>$ gcc uartReaderv2.c -o reader</code></p>
+4. Após compilar, execute osexecutáveis gerados, um em cada terminal, usando os seguintes comandos:
+- Para o arquivo de escrita: <p><code>$ ./writer</code></p>
+- Para o arquivo de leitura: <p><code>$ ./reader</code></p>
 
 ### Para programar na FPGA
 1. **Abra o Projeto:**
@@ -75,7 +96,17 @@ Nesta seção, forneceremos instruções sobre como executar o projeto Nirvan na
     </div>
 
 ## Exemplo de montagem
-Nesta seção, apresentaremos um exemplo de montagem do sistema Nirvan.
+
+<img align="center" src="/img/montagem.png" alt="Sensor de Temperatura e Umidade DHT11">
+<p align="center">
+Montagem do projeto.
+</p>
+
+<img align="center" src="/img/terminal.png" alt="Sensor de Temperatura e Umidade DHT11">
+<p align="center">
+Respostas recebidas através do terminal.
+</p>
+
 
 ## UART
 
@@ -87,7 +118,22 @@ Para a realização da comunicação entre o computador e a FPGA foi necessário
 </p>
 
 ### Escrita e Leitura em C
-- Nirvan
+Para fazer a comunicação por parte do computador, foram desenvolvidos dois programas, um para escrita e outro para leitura. 
+
+- O código de escrita funciona como um menu, primeiro ele configura a porta serial, definindo a velocidade e a forma como a porta serial deve se comportar, e define a porta para somente escrita usando a flag <b>O_WRONLY</b>, após isso, ele pede continuamente ao usuário, através de um menu, o endereço do sensor, de 1-8, e o comando de acordo com a informação desejada. Essas informações são então enviadas, respectivamente, o endereço e o comando para a FPGA através da porta serial.
+
+- O código de leitura primeiro configura a porta serial com as mesma condigurações de velocidade e comportamento da porta serial utilizadas pelo código de escrita, exceto que ela utiliza a flag <b>O_RDONLY </b> para definir a porta como somente leitura, logo após, ele pede a cada 1 segundo, as informações que estão sendo recebidas da FPGA pela porta serial, caso não seja recebido nada, não terá saída, mas caso um comando válido seja recebido, a interface exibirá de acordo com o comando a informação do sensor assim como seu endereço.
+
+Além das flags de escrita e leitura já explicadas, ambos os códigos utilizam as seguintes flags para configuração da porta serial:
+
+  <b>IGNPAR</b>: Usada para ignorar erros de paridade.<br>
+  <b>CS8</b>: Define o tamanho dos caracteres da comunicação serial, nesse caso cada caractere é composto por 8 bits.<br>
+  <b>CLOCAL</b>: Indica que a entrada/saída serial está em modo local, não verificando a presença de um modem ou dispositivo de comunicação.<br>
+  <b>CREAD</b>: Indica que a porta serial está pronta para receber dados, ou seja, habilita o receiver.<br>
+  <b>TCIFLUSH</b>: Usada para descartar dados na fila de entrada da porta serial que não foram lidos.<br>
+  <b>TCSANOW</b>: Aplica imediatamente as alterações nas configurações da porta serial.<br>
+  <b>B9600</b>: Representa a velocidade da transmissão serial em baus, assim a velocidade nesse caso é de 9600 bauds.
+
 
 ### Receiver e Transmitter
 **Módulo Receiver**
@@ -186,7 +232,7 @@ Funcionamento do Módulo: Quando o sinal start_bit é definido como 1, o módulo
 </p>
 
 ## Gerenciamento e processamento da informação
-Nesta seção, detalharemos o gerenciamento e o processamento da informação no sistema Nirvan, incluindo:
+Nesta seção, detalharemos o gerenciamento e o processamento da informação no sistema, incluindo:
 
 ### Interface
 - Nicassio
@@ -226,4 +272,16 @@ Nos demais estados essa mesma lógica dos estados TEMP_CONT_S1 e UMID_CONT_S2 se
 [Inclua suas conclusões aqui]
 
 ## Anexos
-[Adicione anexos relevantes, como documentos, diagramas, ou qualquer outra informação complementar.]
+<div id="fpgaimg" style="display: inline_block" align="center">
+    <img src="/img/KitMERCURIO.png" alt="Kit de desenvolvimento Mercurio IV">
+    <p>
+      Kit de Desenvolvimento Altera FPGA Mercurio IV.
+    </p>
+</div>
+
+<div id="dht11img" style="display: inline_block" align="center">
+    <img src="/img/sensorDHT11.png" alt="Sensor de Temperatura e Umidade DHT11">
+    <p>
+      Sensor de Temperatura e Umidade DHT11.
+    </p>
+</div>
