@@ -1,15 +1,23 @@
-/*
-Modulo da interface do DHT11 e apenas desse sensor, caso seja inserido outros sensores seria necessário
-implementar sua interface nos padrões do sistema para seu funcionamento, o sistema já está desenvolvido
-para receber outras interfaces.
-Esta interface instância o modulo do seu sensor (DHT11), pega suas saídas e a depender da requisição ou caso houver
-algum erro ele retorna uma resposta equivalente (Um byte)
+// Autores: 
+// Paulo Queiroz de Carvalho
+// Rita Kassiane Santos
+// Rodrigo Damasceno Sampai
+// Código Original: https://github.com/ritakassiane/interface-entrada-saida/blob/main/FPGA/interface0.v.bak
 
-*/
+// Modificado por: Antonio Nicassio, Cláudia Inês, Luis Fernando do Rosario Cintra e Nirvan Yang
+
+/*
+Este módulo tem como objetivo obter os dados de apenas um sensor dht11, através de seu módulo(dht), e 
+partindo disso disso gerar respostas sendo essas o comando de resposta e o dado pego pelo sensor que 
+será enviado para o módulo do decodificador, se fazendo necessário a criação de uma nova interface 
+para cada novo sensor que for inserido
+
+*/ 
+
 
 module interface0_modificada(
 	input i_Clock,
-	input i_En,
+	input i_En, //bite para ligar a inerface
 	input [7:0] i_request, // Byte de requisição do dados 
 	inout	dht_data_int, // Entrada e saída do sensor DHT11
 	output [7:0] o_data_int, // Saida do dado da interface
@@ -17,8 +25,8 @@ module interface0_modificada(
 	output [5:0]comandos //bits para informar qual comando de resposta será enviado
 );
 
-	wire [7:0] 	w_Hum_Int, w_Hum_Float, w_Temp_Int, w_Temp_Float,w_Crc;
-	wire        w_done11;
+	wire [7:0] 	w_Hum_Int, w_Hum_Float, w_Temp_Int, w_Temp_Float,w_Crc; //fios de resposta de dados de medidas do dht11
+	wire        w_done11; // fio de resposta de conclusão de funcionamento do dht11
 	
 	reg [7:0]r_data_int = 8'b0;
 	reg r_done = 1'b0;
@@ -42,13 +50,9 @@ localparam idle =  2'b00,
 			  send  =  2'b10,
 			  finish  =  2'b11;
 			  
-geradorMicrossegundo geradorMicrossegundo_0(
-	.clk(i_Clock), 
-	.microssegundo(microssegundo)
-);
 
 dht dht_0(
-	.clk(microssegundo), 							//clk de 1 microssegundo
+	.clk(i_Clock), 							//clk de 1 microssegundo
 	.dht_data(dht_data_int), 			//pino de data do dht11
 	.start_bit(en_dht11), 					//sinal de start para a máquina começar
 	.errorSensor(error_int), 		//pino de identificação de erro
@@ -63,18 +67,16 @@ dht dht_0(
 
 always @(posedge i_Clock) begin
 			case(state)
-			idle:  
+			idle:  //estado de espera da interface em que se espera o recebimento do bit de start do módulo (i_En = 1)
 				begin
 					if (i_En == 1'b1) begin // Se o enable estiver ativado
 						r_comandos <= 6'b000000;
 						en_dht11 <= 1'b1; // Ativa o sensor
-						r_Rst <= 1'b1; // Dar-se um sinal de rst para iniciar a obtenção de dados
 						state <= read; // Muda-se de estado
 					end
 				end
-			read:
+			read: //estado em que se espera o recebimento dos dados poelo sensor dht11 e a partir disso se obtém um comando de resposta e o valor pedido
 				begin
-					r_Rst <= 1'b0; // O resete deve ficar somente uma subida de clock para que não fique sempre no IDLE do DHT11
 					if(w_done11 == 1'b1) begin	 // Se o DHT11 estiver terminado o processo, leremos os dados
 						if(i_request == 8'b00110010)begin // Se for pedido temperatura
 							r_comandos = 6'b001000;
@@ -109,12 +111,12 @@ always @(posedge i_Clock) begin
 						state <= send;
 					end
 				end
-			send:
+			send: //estado que indica que o processo foi finalizado
 				begin
 					r_done <= 1'b1; // Informa que o processo foi finalizado
 					state <= finish; 
 				end
-			finish:
+			finish://estado responsavel por zerar o done da interface, encerrar a comunicação com o dht11 e aguardar a máquina ser desligada para ir para o idle
 				begin	
 					r_done <= 1'b0; // Reseta os operadores
 					en_dht11 <= 1'b0;

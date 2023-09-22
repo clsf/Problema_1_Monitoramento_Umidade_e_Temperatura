@@ -1,0 +1,199 @@
+
+State Machine - |mainV3|transmitter3b:transmitter3b_0|state
+Name state.STOP state.DATA state.START state.IDLE 
+state.IDLE 0 0 0 0 
+state.START 0 0 1 1 
+state.DATA 0 1 0 1 
+state.STOP 1 0 0 1 
+
+State Machine - |mainV3|decodificador:decodificador_0|state
+Name state.00 state.sending state.decoding 
+state.00 0 0 0 
+state.decoding 1 0 1 
+state.sending 1 1 0 
+
+State Machine - |mainV3|escalonador:escalonador_0|state
+Name state.TEMP_CONT_S8 state.UMID_CONT_S7 state.TEMP_CONT_S7 state.UMID_CONT_S6 state.TEMP_CONT_S6 state.UMID_CONT_S5 state.TEMP_CONT_S5 state.UMID_CONT_S4 state.TEMP_CONT_S4 state.UMID_CONT_S3 state.TEMP_CONT_S3 state.UMID_CONT_S2 state.TEMP_CONT_S2 state.UMID_CONT_S1 state.TEMP_CONT_S1 state.COMMAND state.UMID_CONT_S8 
+state.COMMAND 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.TEMP_CONT_S1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+state.UMID_CONT_S1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+state.TEMP_CONT_S2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+state.UMID_CONT_S2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+state.TEMP_CONT_S3 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+state.UMID_CONT_S3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+state.TEMP_CONT_S4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+state.UMID_CONT_S4 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+state.TEMP_CONT_S5 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+state.UMID_CONT_S5 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+state.TEMP_CONT_S6 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+state.UMID_CONT_S6 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.TEMP_CONT_S7 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.UMID_CONT_S7 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.TEMP_CONT_S8 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.UMID_CONT_S8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_8|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_8|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_7|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_7|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_6|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_6|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_5|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_5|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_4|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_4|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_3|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_3|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_2|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_2|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|state
+Name state.finish state.send state.read state.00 
+state.00 0 0 0 0 
+state.read 0 0 1 1 
+state.send 0 1 0 1 
+state.finish 1 0 0 1 
+
+State Machine - |mainV3|escalonador:escalonador_0|interface0_modificada:interface_1|dht:dht_0|state
+Name state.STOP state.WAIT_SIGNAL state.DETECT_BIT state.TRANSMIT state.DHT11_HIGH_RESPONSE state.DHT11_RESPONSE state.WAIT_DHT11 state.DETECT_SIGNAL state.START state.0000 
+state.0000 0 0 0 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 0 0 0 1 1 
+state.DETECT_SIGNAL 0 0 0 0 0 0 0 1 0 1 
+state.WAIT_DHT11 0 0 0 0 0 0 1 0 0 1 
+state.DHT11_RESPONSE 0 0 0 0 0 1 0 0 0 1 
+state.DHT11_HIGH_RESPONSE 0 0 0 0 1 0 0 0 0 1 
+state.TRANSMIT 0 0 0 1 0 0 0 0 0 1 
+state.DETECT_BIT 0 0 1 0 0 0 0 0 0 1 
+state.WAIT_SIGNAL 0 1 0 0 0 0 0 0 0 1 
+state.STOP 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |mainV3|receiver2b:receiver2b_0|state
+Name state.START state.STOP state.DATA 
+state.START 0 0 0 
+state.DATA 1 0 1 
+state.STOP 1 1 0 

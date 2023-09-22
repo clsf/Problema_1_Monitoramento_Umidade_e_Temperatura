@@ -3,111 +3,75 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'baudrate_gen:baudrate_gen_0|tick'
-Slack : -5.983
-TNS   : -437.326
+Slack : -5.818
+TNS   : -395.051
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -5.578
-TNS   : -2932.080
-
-Type  : Slow 1200mV 85C Model Setup 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -4.106
-TNS   : -169.795
-
-Type  : Slow 1200mV 85C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
-Slack : 0.393
-TNS   : 0.000
+Slack : -5.274
+TNS   : -2528.366
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.393
+Slack : 0.392
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Hold 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : 0.410
+Type  : Slow 1200mV 85C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
+Slack : 0.395
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -1011.725
+TNS   : -952.615
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'baudrate_gen:baudrate_gen_0|tick'
 Slack : -1.285
 TNS   : -137.495
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -1.285
-TNS   : -66.820
-
 Type  : Slow 1200mV 0C Model Setup 'baudrate_gen:baudrate_gen_0|tick'
-Slack : -5.354
-TNS   : -392.953
+Slack : -5.182
+TNS   : -353.223
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -5.044
-TNS   : -2631.578
-
-Type  : Slow 1200mV 0C Model Setup 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -3.664
-TNS   : -150.432
-
-Type  : Slow 1200mV 0C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
-Slack : 0.345
-TNS   : 0.000
+Slack : -4.776
+TNS   : -2256.447
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.345
+Slack : 0.343
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : 0.360
+Type  : Slow 1200mV 0C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
+Slack : 0.346
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -1011.725
+TNS   : -952.615
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'baudrate_gen:baudrate_gen_0|tick'
 Slack : -1.285
 TNS   : -137.495
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -1.285
-TNS   : -66.820
-
 Type  : Fast 1200mV 0C Model Setup 'baudrate_gen:baudrate_gen_0|tick'
-Slack : -2.446
-TNS   : -158.523
+Slack : -2.335
+TNS   : -138.342
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -2.189
-TNS   : -1049.059
-
-Type  : Fast 1200mV 0C Model Setup 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -1.444
-TNS   : -55.944
-
-Type  : Fast 1200mV 0C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
-Slack : 0.177
-TNS   : 0.000
+Slack : -2.058
+TNS   : -865.245
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
 Slack : 0.177
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : 0.185
+Type  : Fast 1200mV 0C Model Hold 'baudrate_gen:baudrate_gen_0|tick'
+Slack : 0.178
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -831.859
+TNS   : -783.853
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'baudrate_gen:baudrate_gen_0|tick'
 Slack : -1.000
 TNS   : -107.000
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'escalonador:escalonador_0|interface0_modificada:interface_1|geradorMicrossegundo:geradorMicrossegundo_0|invertedSignal'
-Slack : -1.000
-TNS   : -52.000
 
 ------------------------------------------------------------
