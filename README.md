@@ -294,7 +294,7 @@ Nos demais estados essa mesma lógica dos estados TEMP_CONT_S1 e UMID_CONT_S2 se
 
 ## LEs, LABs e Pinos
 <div align="center">
-  <img src="/img/recursos_placa.png" alt="Recursos usados pela placa.">
+  <img src="/img/recursos_placa.PNG" alt="Recursos usados pela placa.">
    <p>
       Resultados de síntese,.
     </p>
