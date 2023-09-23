@@ -53,6 +53,7 @@ O código desenvolvido consiste em três partes:
     - [Interface](#interface)
     - [Escalonador](#escalonador)
     - [Decodificador](#decodificador)
+  - [LEs, LABs e Pinos](#les-labs-e-pinos)
   - [Conclusões](#conclusões)
   - [Anexos](#anexos)
 
@@ -290,6 +291,14 @@ Nos demais estados essa mesma lógica dos estados TEMP_CONT_S1 e UMID_CONT_S2 se
 
 ### Decodificador
 - Nicassio
+
+## LEs, LABs e Pinos
+<div align="center">
+  <img src="/img/recursos_placa.png" alt="Diagrama de Estados do Escalonador">
+   <p>
+      Resultados de síntese,.
+    </p>
+</div>
 
 ## Conclusões
 [Inclua suas conclusões aqui]
