@@ -6,7 +6,7 @@ Problema 1 da disciplina de Sistemas Digitais - Monitoramento de Temperatura e H
 </p>
 O código desenvolvido consiste em três partes:
 
-- A comunicação serial, UART, dividida em comunicação por parte do computador, feita na linguagem de programação C, e na comunicação por parte da FPGA, onde fui utilizado a linguagem de descrição de hardware verilog.
+- A comunicação serial, UART, dividida em comunicação por parte do computador, feita na linguagem de programação C, e na comunicação por parte da FPGA, onde foi utilizado a linguagem de descrição de hardware verilog.
 - O módulo do DHT11 que consiste na máquina de estados que controla o funcionamento do sensor para que a solicitação dos dados seja feita de forma correta.
 - Os módulos de processamento das informações, responsáveis por decidir de acordo com o comando e o endereço do sensor recebidos, qual informação deve ser tratada para envio e de qual sensor deve ser retirada essa informação.
 
@@ -34,7 +34,7 @@ O código desenvolvido consiste em três partes:
 - Thiago Jesus
 
 ## :page_facing_up: Sumário
-- [Problema\_1\_Monitoramento\_Humidade\_e\_Temperatura](#problema_1_monitoramento_humidade_e_temperatura)
+- [Problema 1 - Monitoramento Humidade e Temperatura](#problema-1---monitoramento-humidade-e-temperatura)
   - [Introdução](#introdução)
   - [:student: Equipe de desenvolvimento](#student-equipe-de-desenvolvimento)
   - [:man\_teacher: Tutor](#man_teacher-tutor)
@@ -134,7 +134,11 @@ Para a realização da comunicação entre o computador e a FPGA foi necessário
 </div>
 
 ### Escrita e Leitura em C
-Para fazer a comunicação por parte do computador, foram desenvolvidos dois programas, um para escrita e outro para leitura. 
+Para fazer a comunicação por parte do computador, foram desenvolvidos dois programas, um para escrita e outro para leitura. Em ambos foram utilizadas as seguintes bibliotecas:
+<b>termios.h</b> utilizada para fazer a configuração da porta em aspectos de velocidade e da forma de como os dados são enviados e recebidos;
+<b>fcntl.h</b> responsável por definir a porta como somente escrita e leitura nos seus respectivos códigos;
+<b>unistd.h</b> responsável por fazer a escrita e a leitura na porta.
+
 
 - O código de escrita funciona como um menu, primeiro ele configura a porta serial, definindo a velocidade e a forma como a porta serial deve se comportar, e define a porta para somente escrita usando a flag <b>O_WRONLY</b>, após isso, ele pede continuamente ao usuário, através de um menu, o endereço do sensor, de 1-8, e o comando de acordo com a informação desejada. Essas informações são então enviadas, respectivamente, o endereço e o comando para a FPGA através da porta serial.
 
