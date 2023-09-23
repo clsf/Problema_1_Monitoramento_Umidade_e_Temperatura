@@ -1,10 +1,10 @@
 module transmitter3b(baud_rate, out, data, start, data_transmitted, state_out, wait_transmittion);
 
 input baud_rate, start;
-input [0:23]data;
-output out;
+input [0:23]data; // Inverte a posicação dos bits
+output out; // Saida serial
 output data_transmitted;
-output [1:0]state_out;
+output [1:0]state_out; // Estado atual da maquina para debug
 output wait_transmittion;
 
 reg transmitted = 1'b0;
@@ -22,20 +22,20 @@ integer counter = 23;
 
 always @ (posedge baud_rate) begin
 	case(state)
-		IDLE:
+		IDLE: // Espera o sinal de start
 			begin
 				transmitted = 1'b0;
 				if(start) begin
 					state <= START;
 				end
 			end
-		START:
+		START: // Manda o bit de start
 			begin
 				r_wait_transmittion = 1'b1;
-				out = 1'b0; 
+				out = 1'b0;
 				state <= DATA;
 			end
-		DATA:
+		DATA: // Manda os dados, em data, serialmente
 			begin
 				out = data[counter];
 				r_wait_transmittion = 1'b0;
@@ -44,11 +44,11 @@ always @ (posedge baud_rate) begin
 					state <= STOP;
 				end
 			end
-		STOP:     
+		STOP: // Manda o stop bit     
 			begin	
 				state <= START; 
 				out = 1'b1;
-				if (counter == -1) begin
+				if (counter == -1) begin // Se o ultimo bit foi mandado, volta para o estado IDLE
 					counter = 23;
 					transmitted = 1'b1;	
 					state <= IDLE;

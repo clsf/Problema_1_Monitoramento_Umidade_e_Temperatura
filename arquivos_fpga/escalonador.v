@@ -38,13 +38,13 @@ reg [7:0] address;
 reg en_decoder;
 reg [4:0] state;
 reg [3:0] debug;
-reg [7:0] en_sensors;
+reg [7:0] en_sensors; // Situação (ativadada/desativa) de cada uma das interfaces
 reg [7:0] data_sensor;
 reg [7:0] command_sensor;
 reg [5:0] response_sensor; 
 reg [7:0] address_sensor;
-reg [7:0] temp_cont;
-reg [7:0] umid_cont;
+reg [7:0] temp_cont; // Situação do monitoramento continuo da temperatura de cada sensor
+reg [7:0] umid_cont; // Situação do monitoramento continuo da umidade de cada sensor
 
 wire [7:0] done_sensors;
 wire [7:0] data_sensor1, data_sensor2, data_sensor3, data_sensor4, data_sensor5, data_sensor6, data_sensor7, data_sensor8;
@@ -70,7 +70,7 @@ assign en_decoder_o = en_decoder;
 assign state_o = state;
 assign debug_o = debug;
 
-
+// Instanciamento de cada umas das 8 interfaces
 
 interface0_modificada interface_1(
 .i_Clock(clk), // clk
@@ -156,12 +156,12 @@ interface0_modificada interface_8(
 
 
 always @ (posedge clk) begin
-	if (data_received == 1) begin
+	if (data_received == 1) begin // Atualiza os buffers de comando e de endereço, sempre que recebe dados do receceiver
 		command <= data[15:8];
 		address <= data[7:0];
 	end
 	case (state)
-		COMMAND:
+		COMMAND: // Executa o comando no buffer
 			begin
 				debug <= 4'b0000;
 				if (command == 8'b00110001 | command == 8'b00110010 | command == 8'b00110011 | command == 8'b00110110 | command == 8'b00110111) begin // Se não for nada relacionado a monitoramento continuo
@@ -326,34 +326,34 @@ always @ (posedge clk) begin
 				end
 			end
 			
-		TEMP_CONT_S1:
+		TEMP_CONT_S1: // Monitoramento continuo da temperatura do Sensor 1
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[0] == 1) begin // Verifica se o monitoramento esta ativo
 					debug <= 4'b0101;
-					if (counter == 0) begin
+					if (counter == 0) begin // Etapa 1: Habilita a interface passando o comando de medidade de temperatura atual e o endereço do sensor 1
 						address_sensor <= 8'b00110001;
 						command_sensor <= 8'b00110010;
 						en_sensors[0] <= 1;
 						counter <= counter + 1;
 					end
-					else if (counter == 1) begin
+					else if (counter == 1) begin // Etapa 2
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[0] <= 0; // Desabilita a interface
+						if (done_sensors[0]) begin // Espera a interface mandar os dados
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
-							en_decoder <= 1;
+							en_decoder <= 1; // Habilita o decodificador
 							counter <= counter + 1;
 						end
 					end
-					else if (counter == 2) begin
+					else if (counter == 2) begin // Etapa 3
 						debug <= 4'b0111;
-						en_decoder <= 0;
-						if (done_decoder) begin
+						en_decoder <= 0; // Desabilita o decodificador
+						if (done_decoder) begin // Espera o decodificador enviar os dados
 							counter <= counter + 1;
 						end
 					end
-					else if (counter > 2) begin
+					else if (counter > 2) begin // Etapa 4: Espera 1s para ir para o proximo estado
 						debug <= 4'b1111;
 						counter <= counter + 1;
 						if (counter >= 50000000) begin
@@ -367,14 +367,14 @@ always @ (posedge clk) begin
 					state <= UMID_CONT_S1;
 				end
 			end
-			
+		// Os proximo estados funcionam de maneira semelhante ao anterior	
 		UMID_CONT_S1:
 			begin
 				if (umid_cont[0] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
 						address_sensor <= 8'b00110001;
-						command_sensor <= 8'b00110011;
+						command_sensor <= 8'b00110011; // Comando da madidade da umidade atual
 						en_sensors[0] <= 1;
 						counter <= counter + 1;
 					end
@@ -412,18 +412,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S2:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[1] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110010;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[1] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[1] <= 0;
+						if (done_sensors[1]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -454,18 +454,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S2:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[1] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110010;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[1] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[1] <= 0;
+						if (done_sensors[1]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -496,18 +496,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S3:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[2] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110011;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[2] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[2] <= 0;
+						if (done_sensors[2]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -538,18 +538,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S3:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[2] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110011;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[2] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[2] <= 0;
+						if (done_sensors[2]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -580,18 +580,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S4:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[3] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110100;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[3] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[3] <= 0;
+						if (done_sensors[3]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -622,18 +622,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S4:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[3] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110100;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[3] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[3] <= 0;
+						if (done_sensors[3]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -664,18 +664,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S5:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[4] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110101;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[4] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[4] <= 0;
+						if (done_sensors[4]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -706,18 +706,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S5:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[4] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110101;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[4] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[4] <= 0;
+						if (done_sensors[4]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -748,18 +748,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S6:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[5] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110110;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[5] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[5] <= 0;
+						if (done_sensors[5]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -790,18 +790,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S6:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[5] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110110;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[5] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[5] <= 0;
+						if (done_sensors[5]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -832,18 +832,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S7:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[6] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110111;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[6] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[6] <= 0;
+						if (done_sensors[6]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -874,18 +874,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S7:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[6] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00110111;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[6] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[6] <= 0;
+						if (done_sensors[6]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -916,18 +916,18 @@ always @ (posedge clk) begin
 			
 		TEMP_CONT_S8:
 			begin
-				if (temp_cont[0] == 1) begin
+				if (temp_cont[7] == 1) begin
 					debug <= 4'b0101;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00111000;
 						command_sensor <= 8'b00110010;
-						en_sensors[0] <= 1;
+						en_sensors[7] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b0110;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[7] <= 0;
+						if (done_sensors[7]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
@@ -958,18 +958,18 @@ always @ (posedge clk) begin
 			
 		UMID_CONT_S8:
 			begin
-				if (umid_cont[0] == 1) begin
+				if (umid_cont[7] == 1) begin
 					debug <= 4'b1000;
 					if (counter == 0) begin
-						address_sensor <= 8'b00110001;
+						address_sensor <= 8'b00111000;
 						command_sensor <= 8'b00110011;
-						en_sensors[0] <= 1;
+						en_sensors[7] <= 1;
 						counter <= counter + 1;
 					end
 					else if (counter == 1) begin
 						debug <= 4'b1001;
-						en_sensors[0] <= 0;
-						if (done_sensors[0]) begin
+						en_sensors[7] <= 0;
+						if (done_sensors[7]) begin
 							data_sensor <= data_sensor1; 
 							response_sensor <= response_sensor1;
 							en_decoder <= 1;
