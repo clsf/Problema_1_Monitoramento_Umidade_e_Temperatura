@@ -260,7 +260,26 @@ Funcionamento do Módulo: Quando o sinal start_bit é definido como 1, o módulo
 Nesta seção, detalharemos o gerenciamento e o processamento da informação no sistema, incluindo:
 
 ### Interface
-- Nicassio
+Para obtenção de dados do sensor é utilizado o módulo DHT11, para filtrar o qual dado  do comando vai ser enviado como resposta foi feito o módulo da interface.Este módulo é responsável por criar o módulo DTH11, fazer a requisição de dados através dele, e atribuir um comando de resposta a partir do pedido enviado pelo usuário e a resposta obtida pelo sensor.
+
+**Funcionamento se dá por uma máquina composta de 4 estados:** 
+
+1. **IDLE:**Este é o estado de espera em que a interface fica até receber o bit de start, fazendo com que zere os bits do comando de resposta, ligue o módulo do DHT11 e por fim vá para o estado de read. 
+
+2. **READ:** Neste estado é esperado a confirmação de obtenção de dados do sensor pelo bit de done do DTH11.Após isso é analisado o comando enviado pelo usuário no computador e atribui-se um comando de resposta correspondente, além do dado pedido, sendo uma medida de temperatura ou umidade, caso o módulo DHT11 encontre um erro na comunicação, é ignorado todas as definições feitas antes e atribuído o comando de resposta como erro e vai para o estado de send. 
+
+3. **SEND:**Chegando no read, é o estado que apenas muda o bit de done da interface para 1, indicando que terminou seu funcionamento e muda o estado para finish. 
+
+4. **FINISH:** É o estado responsável por zerar o done da interface, desligar o módulo DHT11 instanciado, e ficando neste estado até que o bit de ligar a interface mude para 0 e desta forma vá para o idle para que possa funcionar novamente.
+
+<div align="center">
+  <img src="/img/Interface.drawio.png" alt="Diagrama de Estados da Interface">
+   <p>
+      Diagrama de Estados da Interface
+    </p>
+</div>
+
+
 
 ### Escalonador
 O módulo de escalonador foi feito em Verilog Comportamental e atua como um controlador para comunicação com as interfaces dos sensores e o decodificador. O funcionamento desse escalonador é controlado por uma FSM de Mealy, com 17 estados, sendo um estado para executar o comando e um estado para executar o monitoramento contínuo da temperatura e outro para o da umidade de cada sensor. 
