@@ -264,7 +264,7 @@ Para obtenção de dados do sensor é utilizado o módulo DHT11, para filtrar o 
 
 **Funcionamento se dá por uma máquina composta de 4 estados:** 
 
-1. **IDLE:** Este é o estado de espera em que a interface fica até receber o bit de start, fazendo com que zere os bits do comando de resposta, ligue o módulo do DHT11 e por fim vá para o estado de read. 
+1. **IDLE:** Este é o estado de espera em que a interface fica até que o bit de enable se torne 1, fazendo com que zere os bits do comando de resposta, ligue o módulo do DHT11 e por fim vá para o estado de read. 
 
 2. **READ:** Neste estado é esperado a confirmação de obtenção de dados do sensor pelo bit de done do DTH11.Após isso é analisado o comando enviado pelo usuário no computador e atribui-se um comando de resposta correspondente, além do dado pedido, sendo uma medida de temperatura ou umidade, caso o módulo DHT11 encontre um erro na comunicação, é ignorado todas as definições feitas antes e atribuído o comando de resposta como erro e vai para o estado de send. 
 
@@ -310,7 +310,23 @@ Nos demais estados essa mesma lógica dos estados TEMP_CONT_S1 e UMID_CONT_S2 se
 
 
 ### Decodificador
-- Nicassio
+Para enviar os dados de resposta para o computador através do transmitter, é necessário organizá-los em um conjunto de 24 bits, contendo o endereço do sensor, comando de resposta e medida de temperatura ou umidade.Para esta organização e controle de envio de dados para o computador foi feito o módulo do decodificador, que recebe o comando e dado de resposta, organiza eles, manda para o transmitter, aguarda aguarda o envio e volta para o estado inicial. 
+
+**Funcionamento:**
+
+1. **IDLE:** Estado de espera do decodificador onde fica preso até que o seu bit de enable se torne 1, zerando o done e os dados que são enviados para o transmitter, e após isso indo para o estado de decoding.
+
+2. **DECONDING:** Neste estado é analisado o comando de resposta recebido e partir disso é organizado os  24 bits de envio, atribuindo os ultimos 8 bits(de 16 a 23) como bits de endereço do sensor, o 8 bits antes(de 8 a 15) dele como o comando de resposta e por fim os 8 primeiros bits(de 0 a 7) como bits de medida da temperatura ou umidade.Após este processo é habilitado o transmitter para envio de desses dados e o estado é mudado para sending. 
+
+3. **SENDING:** Por fim neste último estado é aguardado o bit de wait do transmitter, que indica que inicio a transmissão dos dados pelo transmitter para mudar o enable do transmitter para 0, para que evite uma emissão duplicada de dados, e após o transmitter enviar os dados para o pc, o done do decodificador se torna 1 e o estado se torna idle novamente.
+
+<div align="center">
+  <img src="/img/Decodificador.drawio.png" alt="Diagrama de Estados do Decodificador">
+   <p>
+      Diagrama de Estados do Decodificador.
+    </p>
+</div>
+
 
 ## LEs, LABs e Pinos
 <div align="center">
