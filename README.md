@@ -220,7 +220,8 @@ Os dados transmitidos pelo sensor são representados por pulsos em nível lógic
   <img src="/img/transmissao.PNG" alt="MCU Sends out Start Signal & DHT Responses">
 </p>
 
-O módulo DHT11 é responsável pela comunicação com o sensor DHT11.
+O módulo DHT11 é responsável pela comunicação com o sensor DHT11. Para utilizá-lo, fizemos uma adaptação do [módulo existente](https://github.com/juserrrrr/DigitalSensorQuery/blob/main/fpgaProject/dht.v "Repositório José Gabriel") desenvolvido por [José Gabriel](https://github.com/juserrrrr) para suportar apenas um sensor.
+
 Clock de 1 MHz: O módulo utiliza um clock de 1 MHz gerado pelo componente geradorMicrossegundos. Esse clock é obtido a partir de um clock principal de 50 MHz proveniente da FPGA e é utilizado para sincronizar todas as operações de comunicação.
 
 Start_bit: O sinal start_bit desempenha o papel de gatilho para iniciar a comunicação com o sensor DHT11. Quando ativado, ele inicia a troca de dados entre o módulo e o sensor.
