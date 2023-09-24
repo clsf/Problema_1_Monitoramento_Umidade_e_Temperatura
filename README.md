@@ -337,7 +337,7 @@ Para enviar os dados de resposta para o computador através do transmitter, é n
 </div>
 
 ## Conclusões
-[Inclua suas conclusões aqui]
+O produto final implementa uma comunicação entre um computador, uma FPGA e multiplos sensores DHT11. Ao longo do processo de desenvolvimento foi utilizado o kit Mercurio 4 que conta com uma FPGA Cyclone IV, um cabo serial e um osciloscopio para visualização da transmissão de dados PC-FPGA e DHT11-FPGA. Atraves da solução desenvolvida, é possivel realizar as requesições de temperatura e umidade atual, estado do sensor e ativar e desativar o monitoramento continuo da temperatura e umidade de cada um dos 8 sensores. Para a construção do produto solicitado foi necessário adquirir conhecimentos sobre Verilog e C, alem do funcionamento do protocolo de comunicação UART e do processo de comunicação com o sensor DHT11.
 
 ## Anexos
 <div id="fpgaimg" style="display: inline_block" align="center">
