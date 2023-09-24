@@ -264,11 +264,11 @@ Para obtenção de dados do sensor é utilizado o módulo DHT11, para filtrar o 
 
 **Funcionamento se dá por uma máquina composta de 4 estados:** 
 
-1. **IDLE:**Este é o estado de espera em que a interface fica até receber o bit de start, fazendo com que zere os bits do comando de resposta, ligue o módulo do DHT11 e por fim vá para o estado de read. 
+1. **IDLE:** Este é o estado de espera em que a interface fica até receber o bit de start, fazendo com que zere os bits do comando de resposta, ligue o módulo do DHT11 e por fim vá para o estado de read. 
 
 2. **READ:** Neste estado é esperado a confirmação de obtenção de dados do sensor pelo bit de done do DTH11.Após isso é analisado o comando enviado pelo usuário no computador e atribui-se um comando de resposta correspondente, além do dado pedido, sendo uma medida de temperatura ou umidade, caso o módulo DHT11 encontre um erro na comunicação, é ignorado todas as definições feitas antes e atribuído o comando de resposta como erro e vai para o estado de send. 
 
-3. **SEND:**Chegando no read, é o estado que apenas muda o bit de done da interface para 1, indicando que terminou seu funcionamento e muda o estado para finish. 
+3. **SEND:** Chegando no read, é o estado que apenas muda o bit de done da interface para 1, indicando que terminou seu funcionamento e muda o estado para finish. 
 
 4. **FINISH:** É o estado responsável por zerar o done da interface, desligar o módulo DHT11 instanciado, e ficando neste estado até que o bit de ligar a interface mude para 0 e desta forma vá para o idle para que possa funcionar novamente.
 
